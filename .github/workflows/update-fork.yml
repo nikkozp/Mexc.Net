@@ -22,7 +22,7 @@ jobs:
       - name: Push changes to your fork
         run: git push origin feature/update-from-upstream
       - name: Create Pull Request
-        uses: peter-j/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: Update from upstream
