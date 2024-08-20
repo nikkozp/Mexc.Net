@@ -14,18 +14,20 @@ jobs:
           git config --global user.email "your_email@example.com"
           git config --global user.name "Your Name"
       - name: Fetch upstream changes
-        run: git fetch upstream
+        run: |
+          git remote add upstream https://github.com/JKorf/Mexc.Net.git
+          git fetch upstream
       - name: Checkout and merge upstream changes
         run: |
-          git checkout -b https://github.com/JKorf/Mexc.Net.git
+          git checkout -b feature/update-from-upstream
           git merge upstream/main
       - name: Push changes to your fork
-        run: git push origin https://github.com/JKorf/Mexc.Net.git
+        run: git push origin feature/update-from-upstream
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: Update from upstream
           body: Automatically created PR
-          head: https://github.com/JKorf/Mexc.Net.git
+          head: feature/update-from-upstream
           base: main
