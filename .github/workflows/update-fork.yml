@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: main # Убедитесь, что используете правильную основную ветку
-          token: ${{ secrets.PAT_TOKEN }} # Использование вашего личного токена
+          token: ${{ secrets.GITHUB_TOKEN }} # Использование вашего личного токена
 
       - name: Setup Git
         run: |
